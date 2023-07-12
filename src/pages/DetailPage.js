@@ -5,6 +5,7 @@ import { Comment, SubTitle, Title } from "../components/ListItemStyle";
 import { getDateFormat } from "../utils/DateFormat";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
 
 function DetailPage() {
   const { detail, getNumber } = useIssueDetail();
@@ -43,7 +44,9 @@ function DetailPage() {
             </div>
             <Comment>코멘트: {detail.comments}</Comment>
           </DetailTitle>
-          <Body>{detail.body}</Body>
+          <Body>
+            <ReactMarkdown>{detail.body}</ReactMarkdown>
+          </Body>
         </>
       )}
     </Main>

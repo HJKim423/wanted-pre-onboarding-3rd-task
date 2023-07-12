@@ -11,7 +11,8 @@ export const Main = styled.div`
   height: 650px;
   margin: auto;
   margin-top: 130px;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 
   & > div {
     width: 100%;
@@ -54,4 +55,18 @@ export const Loading = styled.div`
   display: flex;
   justify-content: center;
   padding: 20px;
+`;
+
+export const NotFoundText = styled.div`
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 200px;
+  margin-bottom: 40px;
+`;
+
+export const GotoMainButton = styled.button`
+  padding: 10px 30px;
+  cursor: pointer;
 `;

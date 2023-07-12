@@ -1,27 +1,31 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import BannerItem from "../components/BannerItem";
 import HeaderComponent from "../components/Header";
 import ListItem from "../components/ListItem";
 import { useListIssue } from "../context/ListIssueContext";
-import { Main } from "./Style";
+import { Loading, Main } from "./Style";
 
 function Home() {
   const target = useRef(null);
 
-  const { listIssue } = useListIssue();
-  console.log(listIssue);
+  const { listIssue, getNextPage } = useListIssue();
+
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     observer.observe(target.current);
   }, []);
+
+  useEffect(() => {
+    getNextPage(page);
+  }, [page, setPage]);
 
   const options = {
     threshold: 1.0,
   };
 
   const callback = () => {
-    //데이터 가져오기
-    // target.current.innerText += "관측되었습니다";
+    setPage(page => page + 1);
   };
 
   const observer = new IntersectionObserver(callback, options);
@@ -29,18 +33,31 @@ function Home() {
     <Main>
       <HeaderComponent />
       {listIssue.map((item, index) => (
-        <ListItem
-          key={index}
-          number={item.number}
-          title={item.title}
-          user={item.user.login}
-          created_at={item.created_at}
-          comments={item.comments}
-        />
+        <div key={index}>
+          {(index + 1) % 4 === 0 ? (
+            <>
+              <ListItem
+                number={item.number}
+                title={item.title}
+                user={item.user.login}
+                created_at={item.created_at}
+                comments={item.comments}
+              />
+              <BannerItem />
+            </>
+          ) : (
+            <ListItem
+              number={item.number}
+              title={item.title}
+              user={item.user.login}
+              created_at={item.created_at}
+              comments={item.comments}
+            />
+          )}
+        </div>
       ))}
 
-      <BannerItem />
-      <div ref={target}>ref</div>
+      <Loading ref={target}>Loading...</Loading>
     </Main>
   );
 }

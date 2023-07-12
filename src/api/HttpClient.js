@@ -8,7 +8,6 @@ export class HttpClient {
   }
 
   fetch(endPoint, options = {}) {
-    // console.log(endPoint, "httpClient");
     return window.fetch(`${this.baseURL + endPoint}`, {
       ...options,
       headers: {

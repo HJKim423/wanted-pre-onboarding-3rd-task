@@ -6,13 +6,14 @@ export class ListIssueService {
     this.httpClient = httpClient;
   }
 
-  async get() {
-    const response = await this.httpClient.fetch("");
+  async get(page) {
+    const response = await this.httpClient.fetch(
+      `?sort=comments&page=${page}&per_page=4`
+    );
 
     return response.json();
   }
   async getDetail(number) {
-    // console.log(number, "서비스");
     if (number) {
       const response = await this.httpClient.fetch(`/${number}`);
 

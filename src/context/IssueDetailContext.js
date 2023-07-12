@@ -9,6 +9,7 @@ export function IssueDeailProvider({ children, ListIssueService }) {
 
   const getNumber = async number => {
     const details = await ListIssueService.getDetail(number).then(setDetail);
+    //undefined에러 if문 추가로 해결
     if (details) {
       setDetail(details);
     }

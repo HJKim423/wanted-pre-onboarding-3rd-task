@@ -7,12 +7,19 @@ export const useListIssue = () => useContext(ListIssueContext);
 export function ListIssueProvider({ children, ListIssueService }) {
   const [listIssue, setListIssue] = useState([]);
 
+  const getNextPage = async page => {
+    const newIssues = await ListIssueService.get(page);
+    if (newIssues) {
+      setListIssue(prev => [...prev, ...newIssues]);
+    }
+  };
+
   useEffect(() => {
-    ListIssueService.get().then(setListIssue);
+    getNextPage();
   }, [setListIssue, ListIssueService]);
 
   return (
-    <ListIssueContext.Provider value={{ listIssue }}>
+    <ListIssueContext.Provider value={{ listIssue, getNextPage }}>
       {children}
     </ListIssueContext.Provider>
   );

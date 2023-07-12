@@ -1,7 +1,7 @@
 import HeaderComponent from "../components/Header";
 import { useIssueDetail } from "../context/IssueDetailContext";
-import { Body, Main } from "./Style";
-import { Comment, Item, SubTitle, Title } from "../components/ListItemStyle";
+import { Avatar, Body, DetailTitle, Loading, Main } from "./Style";
+import { Comment, SubTitle, Title } from "../components/ListItemStyle";
 import { getDateFormat } from "../utils/DateFormat";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -26,10 +26,11 @@ function DetailPage() {
     <Main>
       <HeaderComponent />
       {loading ? (
-        <div>로딩중</div>
+        <Loading>Loading...</Loading>
       ) : (
         <>
-          <Item>
+          <DetailTitle>
+            <Avatar src={detail.user.avatar_url} />
             <div>
               <Title>
                 #{detail.number}
@@ -41,7 +42,7 @@ function DetailPage() {
               </SubTitle>
             </div>
             <Comment>코멘트: {detail.comments}</Comment>
-          </Item>
+          </DetailTitle>
           <Body>{detail.body}</Body>
         </>
       )}

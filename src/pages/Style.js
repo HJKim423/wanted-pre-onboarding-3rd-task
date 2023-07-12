@@ -18,3 +18,9 @@ export const Header = styled.div`
   font-weight: bold;
   padding-bottom: 40px;
 `;
+
+export const Body = styled.div`
+  font-size: 16px;
+  padding: 20px 0;
+  width: 100%;
+`;

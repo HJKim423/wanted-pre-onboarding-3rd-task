@@ -12,6 +12,7 @@ export const Item = styled.div`
     cursor: pointer;
     background: #ededed;
   }
+  gap: 30px;
 `;
 
 export const Banner = styled(Item)`
@@ -21,7 +22,7 @@ export const Banner = styled(Item)`
 `;
 
 export const Title = styled.div`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   margin-bottom: 5px;
 `;
@@ -31,5 +32,8 @@ export const SubTitle = styled.div`
   color: gray;
 `;
 export const Comment = styled.div`
-  font-size: 14px;
+  display: flex;
+  justify-content: right;
+  font-size: 12px;
+  width: 100px;
 `;

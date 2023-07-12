@@ -8,7 +8,7 @@ export class ListIssueService {
 
   async get(page) {
     const response = await this.httpClient.fetch(
-      `?sort=comments&page=${page}&per_page=4`
+      `?sort=comments&page=${page}&per_page=4&state=open`
     );
 
     return response.json();

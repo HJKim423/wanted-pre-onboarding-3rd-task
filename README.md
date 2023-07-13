@@ -1,6 +1,8 @@
 
 ### API
 - GitHub REST API
+   - List repository issues
+   - Get an issue
 
 ---
 

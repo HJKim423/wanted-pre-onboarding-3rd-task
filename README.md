@@ -1,8 +1,10 @@
 
 ### 프로젝트 실행방법
+```
 $ git clone
 $ npm install
 $ npm start
+```
 
 ---
 

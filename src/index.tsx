@@ -7,7 +7,9 @@ import { ListIssueProvider } from "./context/ListIssueContext";
 import { ListIssueService } from "./services/ListIssuesService";
 import { TokenRepository } from "./services/TokenRepository";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
 
 const tokenRepository = new TokenRepository();
 const httpClient = new HttpClient(

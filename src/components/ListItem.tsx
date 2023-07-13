@@ -2,7 +2,15 @@ import { Comment, Item, SubTitle, Title } from "./ListItemStyle";
 import { useNavigate } from "react-router-dom";
 import { getDateFormat } from "../utils/DateFormat";
 
-function ListItem({ number, title, user, created_at, comments }) {
+type ItemType = {
+  number: number;
+  title: string;
+  user: string;
+  created_at: string;
+  comments: string;
+};
+
+function ListItem({ number, title, user, created_at, comments }: ItemType) {
   const navigate = useNavigate();
 
   const goDetailPage = () => {

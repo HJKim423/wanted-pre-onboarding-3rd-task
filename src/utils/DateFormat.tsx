@@ -1,4 +1,4 @@
-export function getDateFormat(date) {
+export function getDateFormat(date: string) {
   var d = new Date(date);
   return (
     d.getFullYear() +

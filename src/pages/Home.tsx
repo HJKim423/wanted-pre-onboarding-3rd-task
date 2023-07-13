@@ -1,14 +1,29 @@
-import { useEffect, useRef, useState } from "react";
+import React, { MutableRefObject, useEffect, useRef, useState } from "react";
 import BannerItem from "../components/BannerItem";
 import HeaderComponent from "../components/Header";
 import ListItem from "../components/ListItem";
 import { useListIssue } from "../context/ListIssueContext";
 import { Loading, Main } from "./Style";
 
-function Home() {
-  const target = useRef(null);
+type HomeType = {
+  listIssue: string[];
+  getNextPage: Function | null;
+};
 
-  const { listIssue, getNextPage } = useListIssue();
+type ItemType = {
+  number: number;
+  title: string;
+  user: {
+    login: string;
+  };
+  created_at: string;
+  comments: string;
+};
+
+function Home() {
+  const target = useRef<HTMLDivElement | any>(null);
+
+  const { listIssue, getNextPage }: any = useListIssue();
 
   const [page, setPage] = useState(1);
 
@@ -17,7 +32,9 @@ function Home() {
   }, []);
 
   useEffect(() => {
-    getNextPage(page);
+    if (getNextPage) {
+      getNextPage(page);
+    }
   }, [page, setPage]);
 
   const options = {
@@ -32,7 +49,7 @@ function Home() {
   return (
     <Main>
       <HeaderComponent />
-      {listIssue.map((item, index) => (
+      {listIssue.map((item: ItemType, index: number) => (
         <div key={index}>
           {(index + 1) % 4 === 0 ? (
             <>

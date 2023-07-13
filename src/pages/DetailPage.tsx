@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 
 function DetailPage() {
-  const { detail, getNumber } = useIssueDetail();
+  const { detail, getNumber }: any = useIssueDetail();
   const { id } = useParams();
 
   const [loading, setLoading] = useState(true);

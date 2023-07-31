@@ -10,8 +10,8 @@ $ npm start
 
 ### API
 - GitHub REST API
-   - List repository issues
-   - Get an issue
+   - GET / List repository issues
+   - GET / Get an issue
 
 ---
 
@@ -87,7 +87,4 @@ $ npm start
 - styled-components
 - react-markdown
 
-### issue
 
-- 디테일 페이지 이동 시 그 전 페이지 화면이 아주 잠깐 보임(23.07.12)
-- src > pages > Home.tsx, DetailPage.tsx 에 type : any 적용 있음 (23.07.13)
